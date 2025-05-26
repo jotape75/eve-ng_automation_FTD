@@ -32,7 +32,8 @@ tqdm._instances.clear()
 # Configure logging
 timestamp = datetime.datetime.now()
 formatted_timestamp = timestamp.strftime("%Y-%m-%d %H:%M:%S") # Format the timestamp for the log file name for LINUX
-#formatted_timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S') # Format the timestamp for the log file name for WINDOWS
+#formatted_timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S') # Format the timestamp for the 
+# log file name for WINDOWS
 
 LOG_FILE = f'/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/log/{formatted_timestamp}_main_log_file.log'  # Specify the log file path
 logging.basicConfig(
@@ -95,6 +96,7 @@ def main():
         ftd_payload, 
         ftd_config, 
         ftd_pwd,
+        ftd_screen_shot,
         eve_ng_url_login,
         eve_node_creation_url,
         eve_authorization_header,
@@ -148,6 +150,7 @@ def main():
             ftd_payload, 
             ftd_config, 
             ftd_pwd,
+            ftd_screen_shot,
             eve_node_creation_url,
             eve_start_nodes_url,
             eve_node_port,

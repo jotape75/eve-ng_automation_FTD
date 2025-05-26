@@ -364,7 +364,7 @@ def get_node_port(device_id,*args):
 # This function will be called to configure the node using Telnet
 # Eve-ng uses Telnet to connect to the nodes as a console connection
 
-def telnet_conn(port, name, device_id, dev_num, node_type,ftd_config,ftd_pwd, *args):
+def telnet_conn(port, name, device_id, dev_num, node_type,ftd_config,ftd_pwd,ftd_screen_shot, *args):
     (
     response,
     headers,
@@ -416,12 +416,12 @@ def telnet_conn(port, name, device_id, dev_num, node_type,ftd_config,ftd_pwd, *a
     """
     # Define the screen file paths
     screen_file_path = os.path.join(
-    "/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/log",
+    ftd_screen_shot,
     f"screen_{node_type}_{device_id}.png"
     )
     # Define the processed screen file path for OCR better resolution
     screen_file_path_processed = os.path.join(
-    "/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/log",
+    ftd_screen_shot,
     f"_processed_screen_{node_type}_{device_id}.png"
     )
 
@@ -608,6 +608,7 @@ def run_threads(
     ftd_payload, 
     ftd_config, 
     ftd_pwd,
+    ftd_screen_shot,
     eve_node_creation_url,
     eve_start_nodes_url,
     eve_node_port,
@@ -713,7 +714,7 @@ def run_threads(
                 if node_type == "FTD Firewall":
                     th = threading.Thread(
                         target=threading_process,
-                        args=(dev_num, node_type, ftd_payload,ftd_config,ftd_pwd, create_progress, start_progress, connect_progress, configure_progress, close_progress, *args_var),
+                        args=(dev_num, node_type, ftd_payload,ftd_config,ftd_pwd,ftd_screen_shot,create_progress, start_progress, connect_progress, configure_progress, close_progress, *args_var),
                     )
                     threads.append(th)
                     time.sleep(3)   # Default delay for others
@@ -754,6 +755,7 @@ def threading_process(
     node_type, device_payload,
     ftd_config,
     ftd_pwd, 
+    ftd_screen_shot,
     create_progress, 
     start_progress, 
     connect_progress, 
@@ -826,7 +828,7 @@ def threading_process(
         connect_progress.update(1)
 
         # Step 4: Configure the node
-        telnet_conn(port, name, device_id, dev_num, node_type, ftd_config, ftd_pwd, *args)
+        telnet_conn(port, name, device_id, dev_num, node_type, ftd_config, ftd_pwd,ftd_screen_shot, *args)
         configure_progress.update(1)
 
         # Step 5: Register the node on FMC - Runnng outside the thread

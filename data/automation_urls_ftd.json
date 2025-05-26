@@ -32,6 +32,7 @@
         "ftd_node_payload":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/payload/ftd_node.json",
         "ftd_config":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/FTD.xlsx",
         "ftd_pwd":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/ftd_pwd.txt",
+        "screen_shot":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/log",
         "fmc_payload":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/fmc_dev_data.xlsx",
         "ha_payload":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/payload/fmc_ha_payload.json",
         "fmc_sec_zones":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/payload/sec_zones.json",

@@ -128,6 +128,7 @@ def file_path():
             ftd_node = files_path["urls"]["ftd_node_payload"]
             ftd_config = files_path["urls"]["ftd_config"]
             ftd_pwd = files_path["urls"]["ftd_pwd"]
+            ftd_screen_shot= files_path["urls"]["screen_shot"]
 
             # FMC parameters
             fmc_token = files_path["fmc_api"]["fmc_token"]
@@ -268,6 +269,7 @@ def file_path():
         ftd_payload, \
         ftd_config, \
         ftd_pwd,\
+        ftd_screen_shot,\
         eve_ng_url_login,\
         eve_node_creation_url,\
         eve_authorization_header,\
