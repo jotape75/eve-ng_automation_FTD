@@ -9,7 +9,6 @@
 
 This project automates the deployment and configuration of **Cisco Firepower Threat Defense (FTD)** devices in **EVE-NG** and their registration with **Firepower Management Center (FMC)** using Python. It supports multithreading for efficient handling of tasks like node creation, device registration, HA configuration, security zones, interfaces, and routing.
 
-
 ---
 
 ## **Features**
@@ -32,7 +31,6 @@ This project automates the deployment and configuration of **Cisco Firepower Thr
 
 ```
 eve-ng_automation_FTD
-.
 ├── data
 │   ├── automation_urls_ftd.json
 │   ├── eve_creds.xlsx
@@ -45,6 +43,7 @@ eve-ng_automation_FTD
 │       ├── ftd_node.json
 │       ├── interface.json
 │       └── sec_zones.json
+├── EVE-NG_VM_SETUP.md
 ├── LICENSE
 ├── log
 │   └── README.md
@@ -55,6 +54,11 @@ eve-ng_automation_FTD
 │   ├── main_ftd.py
 │   ├── processing_fmc.py
 │   ├── processing_ftd.py
+│   ├── __pycache__
+│   │   ├── exceptions_ftd.cpython-310.pyc
+│   │   ├── processing_fmc.cpython-310.pyc
+│   │   ├── processing_ftd.cpython-310.pyc
+│   │   └── utils_ftd.cpython-310.pyc
 │   └── utils_ftd.py
 └── troubleshooting
     ├── eve_api_connection_test.py
@@ -224,38 +228,13 @@ python src/main_ftd.py
 - OCR processing creates temporary files
 - Log files are written to the project directory
 
-### **Troubleshooting Installation**
+### **EVE-NG VM Environment Setup**
 
-**Permission Errors:**
-```bash
-# If you see permission denied errors:
-sudo chown -R $USER:$USER ./
-chmod -R u+w ./
-```
+**⚠️ Important for EVE-NG Community Edition Users:**
 
-**Missing Dependencies:**
-```bash
-# Reinstall requirements if needed:
-pip install --upgrade -r requirements.txt
-```
+If you're using the **EVE-NG Community Edition VM** (downloaded from EVE-NG website), you may encounter screen capture issues due to missing GUI automation dependencies.
 
-**Tesseract Issues:**
-```bash
-# Verify Tesseract is in PATH:
-which tesseract
-
-# Test OCR functionality:
-python -c "import pytesseract; print(pytesseract.get_tesseract_version())"
-```
-
-**Virtual Environment Issues:**
-```bash
-# If virtual environment has issues, recreate it:
-rm -rf venv/
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
+**See the complete setup guide:** [EVE-NG_VM_SETUP.md](EVE-NG_VM_SETUP.md)
 
 ---
 
@@ -565,44 +544,6 @@ python src/main_ftd.py
     - Creates host objects and configures default static routes.
 
 ---
-
-## **Dependencies**
-
-The project requires the following Python libraries:
-
-- `requests` - HTTP API calls
-- `pandas` - Excel and data handling  
-- `openpyxl` - Reading Excel files
-- `pyfiglet` - ASCII art banners
-- `tqdm` - Progress bars
-- `vncdotool` - VNC automation
-- `Pillow` - Image processing
-- `pytesseract` - OCR (text recognition)
-
-Install them using:
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## **System Requirements**
-
-- **Python 3.8+**
-- **Tesseract OCR** (for text recognition from screenshots)
-  ```bash
-  # Ubuntu/Debian
-  sudo apt-get install tesseract-ocr
-  
-  # CentOS/RHEL
-  sudo yum install tesseract
-  
-  # macOS
-  brew install tesseract
-  ```
-
----
-
 ## **Error Handling**
 
 - **FileNotFoundError**: Raised if a required configuration file is missing.

@@ -455,7 +455,12 @@ def telnet_conn(port, name, device_id, dev_num, node_type,ftd_config,ftd_pwd, *a
             screen_image = ImageEnhance.Contrast(screen_image).enhance(2)  # Increase contrast
             screen_image = screen_image.resize((screen_image.width * 2, screen_image.height * 2))  # Resize for better OCR
             screen_image.save(screen_file_path_processed)  # Save for debugging
-            return pytesseract.image_to_string(screen_image, config="--psm 6")
+            extracted_text = pytesseract.image_to_string(screen_image, config="--psm 6")
+    
+            logger.info(f"OCR extracted {len(extracted_text)} characters")
+            logger.info(f"OCR text: {repr(extracted_text)}")  # This shows exactly what OCR reads
+    
+            return extracted_text
         # Step 1: Wait for the login prompt
         connectnode_queue.put(f"{datetime.datetime.now()} - Waiting for {node_type} node {device_id} to start...")
         while True:
