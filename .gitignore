@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+myenv/
+
+# IDE/Editor Settings
+.vscode/
+*.code-workspace
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs - ignore log files but keep the directory structure
+*.log
+log/*.log
+log/*.png
+log/*.txt
+
+# But keep the log directory structure
+!log/.gitkeep
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+# Only ignore actual sensitive files if they contain real credentials
+# Remove these lines if your files contain template/placeholder data:
+# *.xlsx
+# *.txt
+# *password*
+# *secret*
+# *creds*

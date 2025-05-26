@@ -1,0 +1,62 @@
+{
+    "ha_payload": {
+        "type": "DeviceHAPair",
+        "name": "ciscoftd_HA",
+        "primary": {
+            "id": "",
+            "name": ""
+        },
+        "secondary": {
+            "id": "",
+            "name": ""
+        },
+        "ftdHABootstrap": {
+            "isEncryptionEnabled": false,
+            "useSameLinkForFailovers": true,
+            "lanFailover": {
+                "subnetMask": "255.255.255.248",
+                "activeIP": "192.168.255.252",
+                "standbyIP": "192.168.255.254",
+                "logicalName": "lanFailover",
+                "useIPv6Address": false,
+                "interfaceObject": {
+                    "id": "interface_id of 1st device",
+                    "type": "PhysicalInterface",
+                    "MTU": 1500,
+                    "mode": "NONE",
+                    "enabled": false,
+                    "name": "GigabitEthernet0/5",
+                    "priority": 0,
+                    "managementOnly": false
+                }
+            },
+            "statefulFailover": {
+                "subnetMask": "255.255.255.248",
+                "activeIP": "192.168.255.252",
+                "standbyIP": "192.168.255.254",
+                "logicalName": "statefulFailover",
+                "useIPv6Address": false,
+                "interfaceObject": {
+                    "id": "interface_id of 2st device",
+                    "type": "PhysicalInterface",
+                    "MTU": 1500,
+                    "mode": "NONE",
+                    "enabled": false,
+                    "name": "GigabitEthernet0/5",
+                    "priority": 0,
+                    "managementOnly": false
+                }
+            }
+        },
+        "ftdHAFailoverTriggerCriteria": {
+            "noOfFailedInterfaceLimit": 1,
+            "peerPollTimeUnit": "SEC",
+            "peerPollTime": 1,
+            "peerHoldTimeUnit": "SEC",
+            "peerHoldTime": 15,
+            "interfacePollTime": 5,
+            "interfacePollTimeUnit": "SEC",
+            "interfaceHoldTime": 25
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "sec_zones_payload": [
+      {
+        "type": "SecurityZone",
+        "name": "OUTSIDE-SEC_ZONE",
+        "interfaceMode": "ROUTED"
+      },
+      {
+        "type": "SecurityZone",
+        "name": "INSIDE-SEC_ZONE",
+        "interfaceMode": "ROUTED"
+      },
+      {
+        "type": "SecurityZone",
+        "name": "DMZ-SEC_ZONE",
+        "interfaceMode": "ROUTED"
+      }
+    ]
+  }

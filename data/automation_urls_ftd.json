@@ -1,0 +1,41 @@
+{
+    "eve_authorization_header": "Basic YWRtaW46ZXZl",
+    "api_urls": {
+        "eve_ng_url_login": "http://192.168.0.119/api/auth/login",
+        "eve_node_creation_url": "http://192.168.0.119/api/labs/Ansiblelab.unl/nodes",
+        "eve_start_node_url": "http://192.168.0.119/api/labs/Ansiblelab.unl/nodes/{device_id}/start",
+        "eve_interface_connection_url": "http://192.168.0.119/api/labs/Ansiblelab.unl/nodes/{device_id}/interfaces",
+        "eve_node_port":"http://192.168.0.119/api/labs/Ansiblelab.unl/nodes/{device_id}",
+        "eve_node_interface_url":"http://192.168.0.119/api/labs/Ansiblelab.unl/nodes/{device_id}/interfaces",
+        "eve_network_mgmt_url":"http://192.168.0.119/api/labs/Ansiblelab.unl/networks/21",
+        "eve_networks_url":"http://192.168.0.119/api/labs/Ansiblelab.unl/networks"
+    },
+    "fmc_api": {
+        "fmc_token": "https://192.168.0.201/api/fmc_platform/v1/auth/generatetoken",
+        "fmc_devices":"https://192.168.0.201/api/fmc_config/v1/domain/default/devices/devicerecords",
+        "fmc_ha_pair":"https://192.168.0.201/api/fmc_config/v1/domain/default/devicehapairs/ftddevicehapairs",
+        "url_policyid":"https://192.168.0.201/api/fmc_config/v1/domain/default/policy/accesspolicies",
+        "dev_detail_url" :"https://192.168.0.201/api/fmc_config/v1/domain/default/devices/devicerecords/{device_id}",
+        "ha_settings_url":"https://192.168.0.201/api/fmc_config/v1/domain/default/devicehapairs/ftddevicehapairs",
+        "url_devices_int":"https://192.168.0.201/api/fmc_config/v1/domain/default/devices/devicerecords/{device_id}/physicalinterfaces",
+        "ha_check_url":"https://192.168.0.201/api/fmc_config/v1/domain/default/devicehapairs/ftddevicehapairs/{ha_id}",
+        "sec_zones":"https://192.168.0.201/api/fmc_config/v1/domain/default/object/securityzones",
+        "url_devices_int_det":"https://192.168.0.201/api/fmc_config/v1/domain/default/devices/devicerecords/{primary_status_id}/physicalinterfaces/{interface_id}",
+        "object_network": "https://192.168.0.201/api/fmc_config/v1/domain/default/object/networks",
+        "object_host": "https://192.168.0.201/api/fmc_config/v1/domain/default/object/hosts",
+        "routing":"https://192.168.0.201/api/fmc_config/v1/domain/default/devices/devicerecords/{primary_status_id}/routing/ipv4staticroutes"
+
+
+    },
+    "urls": {
+        "data_file": "/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/eve_creds.xlsx",
+        "ftd_node_payload":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/payload/ftd_node.json",
+        "ftd_config":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/FTD.xlsx",
+        "ftd_pwd":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/ftd_pwd.txt",
+        "fmc_payload":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/fmc_dev_data.xlsx",
+        "ha_payload":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/payload/fmc_ha_payload.json",
+        "fmc_sec_zones":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/payload/sec_zones.json",
+        "fmc_int_payload":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/payload/interface.json",
+        "fmc_route_payload":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/payload/default_route.json"
+    }
+}

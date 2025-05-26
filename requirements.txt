@@ -1,0 +1,10 @@
+# Core dependencies for FTD automation
+requests>=2.28.0
+pandas>=1.5.0
+openpyxl>=3.0.10
+pyfiglet>=0.8.0
+tqdm>=4.64.0
+vncdotool>=1.0.0
+Pillow>=9.2.0
+pytesseract>=0.3.10
+colorama>=0.4.5
