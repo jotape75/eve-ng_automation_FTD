@@ -1,7 +1,8 @@
 import requests 
 import datetime 
 import uuid # Unique identifier library
-from telnetlib import Telnet
+from telnetlib import Telnet # Python < 3.13
+#from telnetlib3 import Telnet  # Python >= 3.13
 import time
 import datetime
 import pandas as pd

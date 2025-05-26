@@ -47,7 +47,7 @@ eve-ng_automation_FTD
 │       └── sec_zones.json
 ├── LICENSE
 ├── log
-│   └── 2025-05-24 18:04:07_main_log_file.log
+│   └── README.md
 ├── README.md
 ├── requirements.txt
 ├── src
@@ -61,17 +61,80 @@ eve-ng_automation_FTD
     └── fmc_api_connection_test.py
 ```
 ---
-
----
-
 ## **Installation**
 
 ### **Prerequisites**
 
 **System Requirements:**
-- **Python 3.8+**
+- **Python 3.8 - 3.12** (See compatibility notes below)
 - **Git** (for cloning the repository)
 - **Tesseract OCR** (for text recognition from screenshots)
+
+### **Python Version Compatibility**
+
+| Python Version | Status | Notes |
+|----------------|--------|-------|
+| 3.8 - 3.12 | ✅ Fully Supported | Recommended versions |
+| 3.13+ | ⚠️ Requires Setup | Install `telnetlib3`: `pip install telnetlib3` |
+
+### **Windows Setup Guide**
+
+**Prerequisites:**
+- **Python 3.8-3.12** (Python 3.13+ requires additional setup)
+- **Git** (for cloning the repository)
+- **Tesseract OCR** (for text recognition from screenshots)
+
+### **Step-by-Step Windows Installation**
+
+#### **1. Install Tesseract OCR**
+```cmd
+# Download from: https://github.com/UB-Mannheim/tesseract/wiki
+# Run installer as Administrator
+# Default installation path: C:\Program Files\Tesseract-OCR\
+```
+
+#### **2. Clone Repository**
+```cmd
+# Clone the repository
+git clone https://github.com/your-username/eve-ng_automation_FTD.git
+cd eve-ng_automation_FTD
+```
+
+#### **3. Create Virtual Environment**
+```cmd
+# Create virtual environment (use Command Prompt, not PowerShell)
+python -m venv venv311
+
+# Activate virtual environment
+venv311\Scripts\activate.bat
+
+# Verify activation (should show (venv311) prefix)
+```
+
+#### **4. Install Dependencies**
+```cmd
+# Install required packages
+pip install -r requirements.txt
+```
+#### **5. Configure Tesseract**
+```cmd
+# Add Tesseract to PATH for current session
+set PATH=%PATH%;C:\Program Files\Tesseract-OCR\
+
+# Verify Tesseract installation
+tesseract --version
+
+# Test Python integration
+python -c "import pytesseract; print('Tesseract version:', pytesseract.get_tesseract_version())"
+```
+
+#### **6. Run the Automation**
+```cmd
+# Run the complete automation
+python src\main_ftd.py
+```
+
+### **Linux setup Guide**
 
 **Install Tesseract OCR:**
 ```bash
@@ -85,8 +148,6 @@ sudo yum install tesseract
 # macOS
 brew install tesseract
 
-# Windows
-# Download from: https://github.com/UB-Mannheim/tesseract/wiki
 ```
 
 ### **Setup Steps**

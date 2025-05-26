@@ -218,7 +218,8 @@ def fmc_register(
                     health = dev_detail.get("healthStatus", "").lower()
                     deploy = dev_detail.get("deploymentStatus", "").upper()
                     logger.info(f"Device {dev['name']} healthStatus: {health}, deploymentStatus: {deploy}")
-                    if health == "green" and deploy == "DEPLOYED" and dev["name"] not in ready_devices:
+                    healthy_states = ["green", "yellow", "recovered"]
+                    if health in healthy_states and deploy == "DEPLOYED" and dev["name"] not in ready_devices:    
                         ready_devices[dev["name"]] = dev 
                         fmc_register_progress.update(1)
                     if health == "red" and deploy == "NOT_DEPLOYED":

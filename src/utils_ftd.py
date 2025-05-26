@@ -155,6 +155,7 @@ def file_path():
     except json.JSONDecodeError:
         logger.error("The configuration file 'automation_urls.json' is invalid or malformed.")
         raise InvalidConfigurationError("The configuration file 'automation_urls.json' is invalid or malformed.")
+        
 
     try:
         # Open the Excel file
