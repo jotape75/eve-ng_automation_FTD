@@ -91,27 +91,5 @@ print(f'Screenshot captured: {size} bytes')
 print('✅ Screen capture working!' if size > 0 else '❌ Empty capture file')
 "
 ```
-
 ---
-
-## **Expected Results**
-
-### **Before Fix**
-```bash
-Screenshot Size: 0 bytes (empty captures)
-PyAutoGUI: ModuleNotFoundError
-Display: echo $DISPLAY returns empty
-X11 Auth: Missing .Xauthority file
-```
-
-### **After Fix**
-```bash
-Screenshot Size: 6,108+ bytes (successful capture)
-PyAutoGUI: Working in venv (version 0.9.54)
-Display: Virtual 1920x1080 resolution (:99)
-Screen Capture: pyautogui.screenshot() functional
-```
-
----
-
 **This guide resolves the most common EVE-NG VM compatibility issues for GUI automation and VNC screenshot capture.**
