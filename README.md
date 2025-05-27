@@ -309,11 +309,142 @@ Create an Excel file with the following structure:
 
 ### **3. Configure Automation Settings**:
 
+📋 **Installation & dependencies are covered in the README.md installation section above. This section focuses only on the configuration files you need to customize for your environment.**
+
+**Update Configuration File** (`data/automation_urls_ftd.json`):
+
+**📦 EVE-NG API URLs** - Replace `<YOUR_EVE_NG_IP>` with your EVE-NG server IP:
+```json
+"api_urls": {
+    "eve_ng_url_login": "http://<YOUR_EVE_NG_IP>/api/auth/login",
+    "eve_node_creation_url": "http://<YOUR_EVE_NG_IP>/api/labs/Ansiblelab.unl/nodes",
+    "eve_start_node_url": "http://<YOUR_EVE_NG_IP>/api/labs/Ansiblelab.unl/nodes/{device_id}/start",
+    "eve_interface_connection_url": "http://<YOUR_EVE_NG_IP>/api/labs/Ansiblelab.unl/nodes/{device_id}/interfaces",
+    "eve_node_port": "http://<YOUR_EVE_NG_IP>/api/labs/Ansiblelab.unl/nodes/{device_id}",
+    "eve_node_interface_url": "http://<YOUR_EVE_NG_IP>/api/labs/Ansiblelab.unl/nodes/{device_id}/interfaces",
+    "eve_network_mgmt_url": "http://<YOUR_EVE_NG_IP>/api/labs/Ansiblelab.unl/networks/<YOUR_NETWORK_MGMT_ID>",
+    "eve_networks_url": "http://<YOUR_EVE_NG_IP>/api/labs/Ansiblelab.unl/networks"
+}
+```
+
+**⚠️ Important Network Management Configuration:**
+
+**Find Your Management Network ID:**
+1. **Open EVE-NG Web Interface**
+2. **Navigate to your lab** (Ansiblelab.unl)
+3. **Right-click on management cloud** → **Edit**
+4. **Note the Network ID** (e.g., 21, 1, 5, etc.)
+
+*Modify the network management cloud ID in the api_urls dictionary as well as in the code 
+for connection between the devices and network management work properly:
+
+**Example Management Network URLs:**
+```json
+"eve_network_mgmt_url": "http://<YOUR EVE-NG IP ADDRESS>/api/labs/Ansiblelab.unl/networks/<YOUR NETWORK MGMT ID>"
+```
+
+**Update Processing File** (`src/processing_ftd.py`):
+
+**Locate the `create_nodes` function and update the management network ID:**
+
+```python
+# Find this line in src/processing_ftd.py (around line XXX):
+interfaces = '{"0":"<MGMT network ID>"}' #21 is the id of the management network being used on MY EVE-ng. Change it for your environment.
+```
+**🔍 How to Find Your Network Management ID:**
+
+**Method  - EVE-NG Web Interface:**
+1. **Login to EVE-NG** web interface
+2. **Open your lab** (xxxx.unl)
+3. **Right-click management cloud** → Edit
+4. **Note the Network ID** displayed
+
+**🔥 FMC API URLs** - Replace `<YOUR_FMC_IP>` with your FMC server IP:
+```json
+"fmc_api": {
+    "fmc_token": "https://<YOUR_FMC_IP>/api/fmc_platform/v1/auth/generatetoken",
+    "fmc_devices": "https://<YOUR_FMC_IP>/api/fmc_config/v1/domain/default/devices/devicerecords",
+    "fmc_ha_pair": "https://<YOUR_FMC_IP>/api/fmc_config/v1/domain/default/devicehapairs/ftddevicehapairs",
+    "url_policyid": "https://<YOUR_FMC_IP>/api/fmc_config/v1/domain/default/policy/accesspolicies",
+    "dev_detail_url": "https://<YOUR_FMC_IP>/api/fmc_config/v1/domain/default/devices/devicerecords/{device_id}",
+    "ha_settings_url": "https://<YOUR_FMC_IP>/api/fmc_config/v1/domain/default/devicehapairs/ftddevicehapairs",
+    "url_devices_int": "https://<YOUR_FMC_IP>/api/fmc_config/v1/domain/default/devices/devicerecords/{device_id}/physicalinterfaces",
+    "ha_check_url": "https://<YOUR_FMC_IP>/api/fmc_config/v1/domain/default/devicehapairs/ftddevicehapairs/{ha_id}",
+    "sec_zones": "https://<YOUR_FMC_IP>/api/fmc_config/v1/domain/default/object/securityzones",
+    "url_devices_int_det": "https://<YOUR_FMC_IP>/api/fmc_config/v1/domain/default/devices/devicerecords/{primary_status_id}/physicalinterfaces/{interface_id}",
+    "object_network": "https://<YOUR_FMC_IP>/api/fmc_config/v1/domain/default/object/networks",
+    "object_host": "https://<YOUR_FMC_IP>/api/fmc_config/v1/domain/default/object/hosts",
+    "routing": "https://<YOUR_FMC_IP>/api/fmc_config/v1/domain/default/devices/devicerecords/{primary_status_id}/routing/ipv4staticroutes"
+}
+```
+
+**📁 File Paths** - Replace `<YOUR_PROJECT_PATH>` with your project directory:
+
+**⚠️ Note for Windows Users:** Use forward slashes (/) even on Windows, as shown in the examples below.
+
+```json
+"urls": {
+    "data_file": "<YOUR_PROJECT_PATH>/eve-ng_automation_FTD/data/eve_creds.xlsx",
+    "ftd_node_payload": "<YOUR_PROJECT_PATH>/eve-ng_automation_FTD/data/payload/ftd_node.json",
+    "ftd_config": "<YOUR_PROJECT_PATH>/eve-ng_automation_FTD/data/FTD.xlsx",
+    "ftd_pwd": "<YOUR_PROJECT_PATH>/eve-ng_automation_FTD/data/ftd_pwd.txt",
+    "screen_shot": "<YOUR_PROJECT_PATH>/eve-ng_automation_FTD/log",
+    "fmc_payload": "<YOUR_PROJECT_PATH>/eve-ng_automation_FTD/data/fmc_dev_data.xlsx",
+    "ha_payload": "<YOUR_PROJECT_PATH>/eve-ng_automation_FTD/data/payload/fmc_ha_payload.json",
+    "fmc_sec_zones": "<YOUR_PROJECT_PATH>/eve-ng_automation_FTD/data/payload/sec_zones.json",
+    "fmc_int_payload": "<YOUR_PROJECT_PATH>/eve-ng_automation_FTD/data/payload/interface.json",
+    "fmc_route_payload": "<YOUR_PROJECT_PATH>/eve-ng_automation_FTD/data/payload/default_route.json"
+}
+```
+
+**🔧 Additional File Updates:**
+
+**Update Utils File** (`src/utils_ftd.py`):
+```python
+# Replace <YOUR_PROJECT_PATH> with your actual project path
+with open('<YOUR_PROJECT_PATH>/eve-ng_automation_FTD/data/automation_urls_ftd.json', 'r') as config_file:
+    files_path = json.load(config_file)
+```
+
+**Update Main File** (`src/main_ftd.py`):
+```python
+# Update log file path and select correct timestamp format for your OS
+
+# For Linux/Mac:
+formatted_timestamp = timestamp.strftime("%Y-%m-%d %H:%M:%S")
+
+# For Windows:
+# formatted_timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+
+LOG_FILE = f'<YOUR_PROJECT_PATH>/eve-ng_automation_FTD/log/{formatted_timestamp}_main_log_file.log'
+```
+
+**📋 Complete Configuration Checklist:**
+
+1. ✅ **EVE-NG IP**: Replace `<YOUR_EVE_NG_IP>` in `api_urls` section
+2. ✅ **FMC IP**: Replace `<YOUR_FMC_IP>` in `fmc_api` section  
+3. ✅ **Project Path**: Replace `<YOUR_PROJECT_PATH>` in `urls` section
+4. ✅ **Network Management ID**: Replace `<YOUR_NETWORK_MGMT_ID>` in `eve_network_mgmt_url`
+5. ✅ **Processing File**: Update network ID in `src/processing_ftd.py` `create_nodes` function
+6. ✅ **Utils File**: Update path in `src/utils_ftd.py`
+7. ✅ **Main File**: Update log path in `src/main_ftd.py`
+8. ✅ **Timestamp**: Select correct format for your OS
+
+**🔧 Critical Network Configuration:**
+- **Management Network ID must match** in both JSON config AND processing_ftd.py
+- **Without correct network ID**, FTD devices won't have management connectivity
+- **Test connectivity** after configuration changes
+
+**💡 Example Paths:**
+```
+Linux:   /home/username/eve-ng_automation_FTD
+Windows: C:/Users/username/eve-ng_automation_FTD
+```
+
 **High Availability Configuration** (`data/payload/fmc_ha_payload.json`):
 ```json
 
 ** There is no need to mofidy this file. **
-
 {
     "ha_payload": {
         "type": "DeviceHAPair",
