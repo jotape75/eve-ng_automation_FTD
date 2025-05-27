@@ -291,7 +291,7 @@ Admin-FTD2025
 - **Password**: API password for authentication  
 - **Secret**: Additional secret/token (if required, otherwise leave empty)
 
-*FMC Device Registration** (`data/fmc_devices.xlsx`):
+**FMC Device Registration** (`data/fmc_devices.xlsx`):
 Create an Excel file with the following structure:
 
 | type | name | hostName | regKey | accessPolicy |
@@ -306,10 +306,7 @@ Create an Excel file with the following structure:
 - **regKey**: Registration key for device authentication
 - **accessPolicy**: Access control policy to assign to the device
 
-
 ### **3. Configure Automation Settings**:
-
-📋 **Installation & dependencies are covered in the README.md installation section above. This section focuses only on the configuration files you need to customize for your environment.**
 
 **Update Configuration File** (`data/automation_urls_ftd.json`):
 
@@ -331,14 +328,14 @@ Create an Excel file with the following structure:
 
 **Find Your Management Network ID:**
 1. **Open EVE-NG Web Interface**
-2. **Navigate to your lab** (Ansiblelab.unl)
+2. **Navigate to your lab** (<labname>.unl)
 3. **Right-click on management cloud** → **Edit**
 4. **Note the Network ID** (e.g., 21, 1, 5, etc.)
 
-*Modify the network management cloud ID in the api_urls dictionary as well as in the code 
+Modify the network management cloud ID in the api_urls dictionary as well as in the code 
 for connection between the devices and network management work properly:
 
-**Example Management Network URLs:**
+**Management Network URL:**
 ```json
 "eve_network_mgmt_url": "http://<YOUR EVE-NG IP ADDRESS>/api/labs/Ansiblelab.unl/networks/<YOUR NETWORK MGMT ID>"
 ```
@@ -348,16 +345,9 @@ for connection between the devices and network management work properly:
 **Locate the `create_nodes` function and update the management network ID:**
 
 ```python
-# Find this line in src/processing_ftd.py (around line XXX):
+# Find this line in src/processing_ftd.py
 interfaces = '{"0":"<MGMT network ID>"}' #21 is the id of the management network being used on MY EVE-ng. Change it for your environment.
 ```
-**🔍 How to Find Your Network Management ID:**
-
-**Method  - EVE-NG Web Interface:**
-1. **Login to EVE-NG** web interface
-2. **Open your lab** (xxxx.unl)
-3. **Right-click management cloud** → Edit
-4. **Note the Network ID** displayed
 
 **🔥 FMC API URLs** - Replace `<YOUR_FMC_IP>` with your FMC server IP:
 ```json
