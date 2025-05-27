@@ -121,9 +121,20 @@ venv311\Scripts\activate.bat
 pip install -r requirements.txt
 ```
 #### **5. Configure Tesseract**
+
+**Temporary:**
 ```cmd
 # Add Tesseract to PATH for current session
 set PATH=%PATH%;C:\Program Files\Tesseract-OCR\
+```
+
+**Permanent:**
+```cmd
+REM Run Command Prompt as Administrator
+setx PATH "%PATH%;C:\Program Files\Tesseract-OCR\" /M
+
+REM Restart your command prompt to see changes
+```
 
 # Verify Tesseract installation
 tesseract --version

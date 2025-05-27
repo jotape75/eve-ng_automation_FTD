@@ -69,7 +69,7 @@ import json
 
 def fmc_conn_test():
     username = 'api_user'
-    password = 'Cisco1234api!'
+    password = 'Cisco1234!'
 
     requests.packages.urllib3.disable_warnings()
     url_token = "https://192.168.0.201/api/fmc_platform/v1/auth/generatetoken"

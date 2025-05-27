@@ -187,8 +187,8 @@ def fmc_register(
             device_names.append(name['name'])
         # Wait for all devices to appear in FMC device records
         max_wait = 600  # seconds
-        waited_rec = 0
-        poll_interval = 10
+        waited_rec = 0 
+        poll_interval = 10 
         pool_interval_reg = 30
         while True:
             response_show = requests.get(fmc_devices, headers=headers, verify=False)
