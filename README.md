@@ -136,10 +136,10 @@ setx PATH "%PATH%;C:\Program Files\Tesseract-OCR\" /M
 REM Restart your command prompt to see changes
 ```
 
-# Verify Tesseract installation
+### **Verify Tesseract installation**
 tesseract --version
 
-# Test Python integration
+### **Test Python integration**
 python -c "import pytesseract; print('Tesseract version:', pytesseract.get_tesseract_version())"
 ```
 
