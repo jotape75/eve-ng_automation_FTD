@@ -76,12 +76,20 @@ def main():
 
         # Load configuration and credentials
         
-        fmc_creds_payload,fmc_token_api = file_path()
+        fmc_creds_payload, \
+        fmc_token_api, \
+        fmc_policyid_url, \
+        fmc_devices_payload = file_path()
 
-
-        firewall_deployer_ha = FTDFirewall_HA(fmc_creds_payload, fmc_token_api, colors)
+        # Creating an instance of the class
+        firewall_deployer_ha = FTDFirewall_HA(fmc_creds_payload,
+                                              fmc_token_api, 
+                                              fmc_policyid_url, 
+                                              fmc_devices_payload, 
+                                              colors)
         # Get API keys
         firewall_deployer_ha.get_api_keys()
+        firewall_deployer_ha.register_device()
 
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}", exc_info=True)  

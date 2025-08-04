@@ -46,15 +46,20 @@ def file_path():
             files_path = json.load(config_file)
 
             # FMC parameters
-            fmc_creds = files_path["payload"]["fmc_creds_payload"]
-            fmc_token_api = files_path["fmc_api"]["fmc_token_api"]
+            ##FILES:
+            fmc_creds = files_path["payload"]["fmc_creds_payload"] #file with FMC credentials
+            fmc_devices = files_path["payload"]["fmc_devices_payload"]
+            
+            ##URLS
+            fmc_token_api = files_path["fmc_api"]["fmc_token_api"] #url to generate token
+            fmc_policyid_url = files_path["fmc_api"]["url_policyid_api"]# url to get policy id
+
             # fmc_devices = files_path["fmc_api"]["fmc_devices"]
             # fmc_data = files_path["urls"]["fmc_payload"]
             # fmc_ha_payload = files_path["urls"]["ha_payload"]
             # fmc_sec_zones_payload = files_path["urls"]["fmc_sec_zones"]
             # fmc_interface_payload = files_path["urls"]["fmc_int_payload"]
             # fmc_route_payload = files_path["urls"]["fmc_route_payload"]
-            # fmc_policyid_url = files_path["fmc_api"]["url_policyid"]
             # fmc_device_details_url = files_path["fmc_api"]["dev_detail_url"]
             # fmc_ha_settings_url = files_path["fmc_api"]["ha_settings_url"]
             # fmc_sec_zones_url = files_path["fmc_api"]["sec_zones"]
@@ -76,15 +81,20 @@ def file_path():
 
     try:
         # Open the JSON files with devices ha payload
-        with open(fmc_creds, 'r') as file_0:
+        with open(fmc_creds,'r') as file_0, \
+            open(fmc_devices,'r') as file_1:
             fmc_creds_payload = json.load(file_0)
+            fmc_devices_payload = json.load(file_1)
     except FileNotFoundError:
         raise FileNotFoundError(f" file not found: {files_path}")
     except json.JSONDecodeError:
         raise ValueError(f"Invalid XML in file: {files_path}")
 
 
-    return fmc_creds_payload,fmc_token_api
+    return fmc_creds_payload, \
+        fmc_token_api, \
+        fmc_policyid_url, \
+        fmc_devices_payload \
 
 def display_message(colors):
     """

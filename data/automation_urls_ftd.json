@@ -22,6 +22,7 @@
         "ha_payload":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/payload/fmc_ha_payload.json",
         "fmc_sec_zones_payload":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/payload/sec_zones.json",
         "fmc_int_payload":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/payload/interface.json",
-        "fmc_route_payload":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/payload/default_route.json"
+        "fmc_route_payload":"/home/user/pystudies/myenv/pythonbasic/projects/eve-ng_automation_FTD/data/payload/default_route.json",
+        "fmc_devices_payload":"/home/user/pystudies/myenv/pythonbasic/projects/FTD_automation_deploy/data/payload/fmc_devices.json"
     }
 }

@@ -1,0 +1,22 @@
+{
+    "device_payload": [
+        {
+            "type": "Device",
+            "name": "FTD-01",
+            "hostName": "192.168.1.100",
+            "regKey": "cisco123",
+            "accessPolicy": {
+                "type": "AccessPolicy"
+            }
+        },
+        {
+            "type": "Device", 
+            "name": "FTD-02",
+            "hostName": "192.168.1.101",
+            "regKey": "cisco123",
+            "accessPolicy": {
+                "type": "AccessPolicy"
+            }
+        }
+    ]
+}
