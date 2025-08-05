@@ -79,13 +79,17 @@ def main():
         fmc_creds_payload, \
         fmc_token_api, \
         fmc_policyid_url, \
-        fmc_devices_payload = file_path()
+        fmc_devices_payload, \
+        fmc_devices_api, \
+        dev_detail_url_api = file_path()
 
         # Creating an instance of the class
         firewall_deployer_ha = FTDFirewall_HA(fmc_creds_payload,
                                               fmc_token_api, 
                                               fmc_policyid_url, 
-                                              fmc_devices_payload, 
+                                              fmc_devices_payload,
+                                              fmc_devices_api,
+                                              dev_detail_url_api, 
                                               colors)
         # Get API keys
         firewall_deployer_ha.get_api_keys()

@@ -53,7 +53,8 @@ def file_path():
             ##URLS
             fmc_token_api = files_path["fmc_api"]["fmc_token_api"] #url to generate token
             fmc_policyid_url = files_path["fmc_api"]["url_policyid_api"]# url to get policy id
-
+            fmc_devices_api = files_path["fmc_api"]["fmc_devices_api"] #url to register devices
+            dev_detail_url_api = files_path["fmc_api"]["dev_detail_url_api"] #url to get device details
             # fmc_devices = files_path["fmc_api"]["fmc_devices"]
             # fmc_data = files_path["urls"]["fmc_payload"]
             # fmc_ha_payload = files_path["urls"]["ha_payload"]
@@ -94,7 +95,9 @@ def file_path():
     return fmc_creds_payload, \
         fmc_token_api, \
         fmc_policyid_url, \
-        fmc_devices_payload \
+        fmc_devices_payload, \
+        fmc_devices_api, \
+        dev_detail_url_api
 
 def display_message(colors):
     """
